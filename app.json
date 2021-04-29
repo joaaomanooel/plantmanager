@@ -1,0 +1,12 @@
+{
+  "name": "PlantManager",
+  "displayName": "PlantManager",
+  "expo": {
+    "name": "PlantManager",
+    "slug": "PlantManager",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
