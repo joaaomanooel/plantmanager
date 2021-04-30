@@ -5,8 +5,8 @@ module.exports = function babelConfig(api) {
     plugins: [
       ['babel-plugin-styled-components'],
       ['module:react-native-dotenv'],
+      ['react-native-reanimated/plugin'],
       ['module-resolver', { alias: { '@/root': '.', '@': './src' } }],
     ],
-    env: { production: { plugins: ['transform-remove-console'] } },
   };
 };

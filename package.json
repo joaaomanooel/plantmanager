@@ -1,10 +1,14 @@
 {
   "main": "index.js",
+  "version": "0.1.0",
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
     "web": "expo start --web",
-    "start": "react-native start"
+    "start": "react-native start",
+    "android": "react-native run-android --appIdSuffix debug",
+    "android:release": "react-native run-android",
+    "android:clean": "cd android && ./gradlew clean",
+    "ios": "react-native run-ios --configuration Debug --scheme Debug",
+    "ios:release": "react-native run-ios --configuration Release --scheme Release"
   },
   "dependencies": {
     "expo": "~41.0.1",

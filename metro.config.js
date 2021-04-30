@@ -1,4 +1,9 @@
-// Learn more https://docs.expo.io/guides/customizing-metro
 const { getDefaultConfig } = require('expo/metro-config');
+const path = require('path');
 
-module.exports = getDefaultConfig(__dirname);
+const config = getDefaultConfig(path.resolve(__dirname));
+
+// Remove all console logs in production...
+config.transformer.minifierConfig.compress.drop_console = true;
+
+module.exports = config;
