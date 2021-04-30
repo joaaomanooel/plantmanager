@@ -1,8 +1,8 @@
 {
   "name": "PlantManager",
-  "displayName": "PlantManager",
+  "displayName": "Plant Manager",
   "expo": {
-    "name": "PlantManager",
+    "name": "Plant Manager",
     "slug": "PlantManager",
     "version": "1.0.0",
     "assetBundlePatterns": [
