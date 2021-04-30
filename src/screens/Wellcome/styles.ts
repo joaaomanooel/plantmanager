@@ -1,43 +1,44 @@
 import styled from 'styled-components/native';
 import { TouchableOpacity } from '@/components';
-import { colors } from '@/constants';
+import { colors, layout } from '@/constants';
 
 export const Container = styled.SafeAreaView`
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex: 1;
 `;
 
 export const Title = styled.Text`
+  font-size: ${layout.scale() * 32}px;
   color: ${colors.heading};
   text-align: center;
   font-weight: bold;
-  margin-top: 32px;
-  font-size: 32px;
 `;
 
 export const SubTitle = styled(Title)`
-  padding-horizontal: 20px;
-  font-size: 16px;
+  padding-horizontal: ${layout.scale() * 20}px;
+  line-height: ${layout.scale() * 24}px;
+  font-size: ${layout.scale() * 16}px;
+  font-weight: 400;
   margin: 0;
 `;
 
 export const Button = styled(TouchableOpacity)`
+  border-radius: ${layout.scale() * 16}px;
   background-color: ${colors.green};
+  height: ${layout.scale() * 56}px;
+  width: ${layout.scale() * 56}px;
   justify-content: center;
   align-items: center;
-  border-radius: 16px;
-  height: 56px;
-  width: 56px;
 `;
 
 export const ButtonText = styled.Text`
+  font-size: ${layout.scale() * 24}px;
   color: ${colors.white};
   font-weight: 600;
-  font-size: 24px;
 `;
 
 export const Image = styled.Image`
-  width: 292px;
-  height: 284px;
+  height: ${layout.scale() * 288}px;
+  resize-mode: contain;
 `;
