@@ -31,7 +31,7 @@ const highShadow = {
   elevation: 15,
 };
 
-export default {
+export default ({
   screenWidth: width,
   screenHeight: height,
   hitSlop: { top: 10, left: 10, right: 10, bottom: 10 },
@@ -40,4 +40,4 @@ export default {
   statusBarHeight: Constants.statusBarHeight,
   highShadow,
   shadow,
-};
+});

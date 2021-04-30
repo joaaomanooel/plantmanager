@@ -11,7 +11,10 @@
     "ios:release": "react-native run-ios --configuration Release --scheme Release"
   },
   "dependencies": {
+    "@expo-google-fonts/jost": "^0.1.0",
     "expo": "~41.0.1",
+    "expo-app-loading": "^1.0.3",
+    "expo-font": "~9.1.0",
     "expo-splash-screen": "~0.10.2",
     "expo-status-bar": "~1.0.4",
     "expo-updates": "~0.5.4",

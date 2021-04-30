@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import * as Updates from 'expo-updates';
-import { StyleSheet, Text, View } from 'react-native';
+import AppLoading from 'expo-app-loading';
+
+import { useFonts, Jost_400Regular, Jost_600SemiBold } from '@expo-google-fonts/jost';
+
 
 import Welcome from './screens/Wellcome';
 
 export default function App() {
+  const [fontsLoaded] = useFonts({ Jost_400Regular, Jost_600SemiBold })
 
   useEffect(() => {
     async function updateApp() {
@@ -17,8 +21,11 @@ export default function App() {
       }
     }
 
+
     updateApp();
   }, [])
+
+  if (!fontsLoaded) return <AppLoading />;
 
   return (
     <>
