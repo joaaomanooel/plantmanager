@@ -1,10 +1,9 @@
 import React from 'react';
-import { Entypo } from '@expo/vector-icons';
 import { images } from '@/constants';
 
 import { Container, Title, SubTitle, Button, ButtonIcon, Image, Wrapper } from './styles';
 
-const screens: React.FC = () => {
+export default () => {
   return (
     <Container>
       <Wrapper>
@@ -22,5 +21,3 @@ const screens: React.FC = () => {
     </Container>
   );
 }
-
-export default screens;
