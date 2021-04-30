@@ -15,6 +15,7 @@ export const Form = styled.KeyboardAvoidingView`
 
 export const Emoji = styled.Text`
   font-size: ${layout.scale() * 48}px;
+  text-align: center;
 `;
 
 export const TitleContainer = styled.View`
