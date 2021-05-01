@@ -7,12 +7,10 @@ interface ButtonProps extends TouchableOpacityProps {
   text: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, textStyle = {}, ...props }) => {
+export default ({ text, textStyle = {}, ...props }: ButtonProps) => {
   return (
     <Container {...props}>
       <ButtonText style={textStyle}>{text}</ButtonText>
     </Container>
   );
 }
-
-export default Button;

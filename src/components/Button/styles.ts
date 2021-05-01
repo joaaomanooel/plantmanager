@@ -8,6 +8,7 @@ export const Container = styled(TouchableOpacity)`
   height: ${layout.scale() * 56}px;
   justify-content: center;
   align-items: center;
+  opacity: ${({ disabled }) => (!disabled ? 1 : 0.5)};
 `;
 
 export const ButtonText = styled.Text`
