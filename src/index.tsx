@@ -2,11 +2,9 @@ import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import * as Updates from 'expo-updates';
 import AppLoading from 'expo-app-loading';
-
 import { useFonts, Jost_400Regular, Jost_600SemiBold } from '@expo-google-fonts/jost';
 
-
-import Welcome from './screens/Wellcome';
+import Navigation from '@/navigation';
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Jost_400Regular, Jost_600SemiBold })
@@ -30,7 +28,7 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" />
-      <Welcome />
+      <Navigation />
     </>
   );
 }
