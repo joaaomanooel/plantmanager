@@ -3,14 +3,18 @@ import { colors, layout, fonts } from '@/constants';
 import { TextInputProps } from './interfaces';
 
 export const Container = styled.SafeAreaView`
+  flex: 1;
+`;
+
+export const Wrapper = styled.View`
   justify-content: center;
-  align-items: center;
   flex: 1;
 `;
 
 export const Form = styled.KeyboardAvoidingView`
   padding-horizontal: ${layout.scale() * 54}px;
-  width: 100%;
+  justify-content: center;
+  flex: 1;
 `;
 
 export const Emoji = styled.Text`
