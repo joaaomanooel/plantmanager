@@ -7,10 +7,10 @@ interface ButtonProps extends TouchableOpacityProps {
   text: string;
 }
 
-export default ({ text, textStyle = {}, ...props }: ButtonProps) => {
+export default React.memo(({ text, textStyle = {}, ...props }: ButtonProps) => {
   return (
     <Container {...props}>
       <ButtonText style={textStyle}>{text}</ButtonText>
     </Container>
   );
-}
+});
