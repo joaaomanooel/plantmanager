@@ -2,7 +2,8 @@
 import { version } from './package.json';
 
 const name = 'PlantManager';
-const displayName = 'Plant Manager';
+const displayName = 'PlantManager';
+const bundle = "com.plantmanager";
 
 export default {
   name,
@@ -14,14 +15,28 @@ export default {
     name: displayName,
     slug: name,
     version,
-    assetBundlePatterns: ['*'],
+    assetBundlePatterns: ['**/*'],
+    orientation: "portrait",
+    updates: {
+      fallbackToCacheTimeout: 0
+    },
+    splash: {
+      image: "./assets/splash.png",
+      backgroundColor: "#ffffff",
+      resizeMode: "contain",
+    },
   },
   android: {
     publishManifestPath: 'android/app/src/main/assets/shell-app-manifest.json',
     publishBundlePath: 'android/app/src/main/assets/shell-app.bundle',
+    package: bundle,
   },
   ios: {
     publishManifestPath: 'ios/cmpc/Supporting/shell-app-manifest.json',
     publishBundlePath: 'ios/cmpc/Supporting/shell-app.bundle',
+    package: bundle,
   },
+  web: {
+    favicon: "./assets/favicon.png"
+  }
 };
