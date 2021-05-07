@@ -25,8 +25,11 @@ jobs:
       - name: Install packages
         run: yarn install
 
-      - name: Deploy Production
-        run: yarn android:deploy_production
+      - name: Build
+        run: fastlane android build
+
+      - name: Distribute
+        run: fastlane android distribute_staging
 
         env:
           APPCENTER_ANDROID_APP_NAME_PROD: ${{ secrets.APPCENTER_ANDROID_APP_NAME_PROD }}
