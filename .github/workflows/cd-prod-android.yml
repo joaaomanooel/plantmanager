@@ -23,16 +23,24 @@ jobs:
         run: bundle install
 
       - name: Install packages
-        run: yarn install
+        run: yarn config set network-timeout 100000 & yarn --frozen-lockfile
+
+      - name: Create Android Assets Bundle
+        run: |
+          yarn react-native bundle \
+            --platform android \
+            --dev false \
+            --entry-file index.js \
+            --bundle-output android/app/src/main/assets/index.android.bundle \
+            --assets-dest android/app/src/main/res
 
       - name: Build
-        run: fastlane android build
+        run: FASTLANE_BUILD_ENVIRONMENT="production" fastlane android build
 
       - name: Distribute
-        run: fastlane android distribute_staging
+        run: FASTLANE_BUILD_ENVIRONMENT="production" fastlane android build
 
         env:
           APPCENTER_ANDROID_APP_NAME_PROD: ${{ secrets.APPCENTER_ANDROID_APP_NAME_PROD }}
           APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
-          FASTLANE_BUILD_ENVIRONMENT: "production"
