@@ -1,0 +1,35 @@
+name: Android - Production
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release-android:
+    name: Android - Deploy Production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "2.x"
+
+      - name: Install Fastlane
+        run: bundle install
+
+      - name: Install packages
+        run: yarn install
+
+      - name: Deploy Production
+        run: yarn android:deploy_production
+
+        env:
+          APPCENTER_ANDROID_APP_NAME_PROD: ${{ secrets.APPCENTER_ANDROID_APP_NAME_PROD }}
+          APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+          FASTLANE_BUILD_ENVIRONMENT: production
