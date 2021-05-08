@@ -41,7 +41,7 @@ jobs:
         run: FASTLANE_BUILD_ENVIRONMENT="production" fastlane android distribute_staging
 
         env:
-          APPCENTER_ANDROID_APP_NAME_PROD: ${{ secrets.APPCENTER_ANDROID_APP_NAME_PROD }}
+          APPCENTER_ANDROID_APP_NAME: ${{ secrets.APPCENTER_ANDROID_APP_NAME_PROD }}
           APPCENTER_OWNER_NAME: ${{ secrets.APPCENTER_OWNER_NAME }}
           APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
