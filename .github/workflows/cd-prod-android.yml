@@ -25,14 +25,14 @@ jobs:
       - name: Install packages
         run: yarn config set network-timeout 100000 & yarn --frozen-lockfile
 
-      - name: Create Android Assets Bundle
-        run: |
-          yarn react-native bundle \
-            --platform android \
-            --dev false \
-            --entry-file index.js \
-            --bundle-output android/app/src/main/assets/index.android.bundle \
-            --assets-dest android/app/src/main/res
+      # - name: Create Android Assets Bundle
+      #   run: |
+      #     yarn react-native bundle \
+      #       --platform android \
+      #       --dev false \
+      #       --entry-file index.js \
+      #       --bundle-output android/app/src/main/assets/index.android.bundle \
+      #       --assets-dest android/app/src/main/res
 
       - name: Build
         run: FASTLANE_BUILD_ENVIRONMENT="production" fastlane android build
