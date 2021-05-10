@@ -12,13 +12,11 @@ export default function App() {
   useEffect(() => {
     async function updateApp() {
       const { isAvailable } = await Updates.checkForUpdateAsync();
-
       if (isAvailable) {
         await Updates.fetchUpdateAsync();
         await Updates.reloadAsync();
       }
     }
-
 
     updateApp();
   }, [])
@@ -27,7 +25,7 @@ export default function App() {
 
   return (
     <>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
       <Navigation />
     </>
   );

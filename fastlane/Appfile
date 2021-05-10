@@ -1,0 +1,13 @@
+def getBundle
+  environment = ENV["FASTLANE_BUILD_ENVIRONMENT"]
+
+  if environment == "production" then return "com.plantmanager" end
+  if environment == "staging" then return "com.plantmanager.staging" end
+
+  return "com.plantmanager.qa"
+end
+
+app_identifier(getBundle())
+
+apple_id ENV["APPLE_ID"]
+team_id ENV["APPLE_TEAM_ID"]

@@ -1,0 +1,15 @@
+# git_url("https://leonardoq:4uakqcyxaazvdpls2r3qyjpn2y6uiaaa65pg4nz6vzy7m55napga@dev.azure.com/trinca/CMPC/_git/certificates")
+git_url ENV["FASTLANE_MATCH_GIT_REPO"]
+git_branch ENV["FASTLANE_MATCH_GIT_BRANCH"]
+
+# storage_mode("git")
+
+# type("production") # The default type, can be: appstore, adhoc, enterprise or development
+
+# app_identifier(["tools.fastlane.app", "tools.fastlane.app2"])
+# username("user@fastlane.tools") # Your Apple Developer Portal username
+
+# For all available options run `fastlane match --help`
+# Remove the # in the beginning of the line to enable the other options
+
+# The docs are available on https://docs.fastlane.tools/actions/match

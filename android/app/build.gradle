@@ -135,8 +135,8 @@ android {
         applicationId "com.plantmanager"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 1620346348
+        versionName "0.1.0"
     }
     splits {
         abi {

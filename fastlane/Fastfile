@@ -1,0 +1,188 @@
+# Project variables
+package = load_json(json_path: "./package.json")
+
+app_json = load_json(json_path: "./app.json")
+display_name = app_json["displayName"]
+project_name = app_json["name"]
+
+xcworkspace_path = "./ios/#{project_name}.xcworkspace"
+xcodeproj_path = "./ios/#{project_name}.xcodeproj"
+plist_path = "./ios/#{project_name}/Info.plist"
+
+$build_env  = ENV["FASTLANE_BUILD_ENVIRONMENT"]
+
+def makeApkPathString (value)
+  return "./android/app/build/outputs/apk/#{value}/app-#{value}.apk"
+end
+
+def getApkPath ()
+  if $build_env  == 'production' then return makeApkPathString('release') end
+  if $build_env  == 'staging' then return makeApkPathString('staging') end
+
+  return makeApkPathString('qa')
+end
+
+def getConfiguration ()
+  if $build_env  == "production" then return "Release" end
+  if $build_env  == "staging" then return "Staging" end
+
+  return "QA"
+end
+
+def getBuildType ()
+  if $build_env  == "production" then return "release" end
+  if $build_env  == "staging" then return "staging" end
+
+  return "qa"
+end
+
+# Platform iOS
+platform :ios do
+  version = package["version"] # Version from package.json
+  app_id = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+  apple_id = CredentialsManager::AppfileConfig.try_fetch_value(:apple_id)
+  team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
+
+  desc "Bump version and build number."
+  lane :bump_versions do
+    increment_version_number(
+      version_number: version,
+      xcodeproj: xcodeproj_path
+    )
+    increment_build_number(
+      xcodeproj: xcodeproj_path,
+      build_number: Time.now.to_i
+    )
+  end
+
+  desc "Create app on Apple Developer portal."
+  lane :create_app_on_apple_developer do
+    produce(
+      username: apple_id,
+      app_name: display_name,
+      app_identifier: app_id,
+      skip_itc: true
+    )
+  end
+
+  desc "Fetch or create certificates and provisioning profiles"
+  lane :signin do
+    match(
+      app_identifier: app_id,
+      type: $build_env  == "production" ? "appstore" : "adhoc",
+      clone_branch_directly: true,
+      force_for_new_devices: $build_env  == "production" ? false : true
+    )
+  end
+
+  desc "Build the iOS application."
+  lane :build do
+    # update_info_plist_identity
+    bump_versions
+    create_app_on_apple_developer
+    register_devices(
+      devices_file: "./fastlane/metadata/devices.txt",
+      team_id: team_id
+    )
+    signin
+    cocoapods(
+      podfile: "./ios/Podfile",
+      silent: true
+    )
+    gym(
+      workspace: xcworkspace_path,
+      scheme: getConfiguration(),
+      configuration: getConfiguration(),
+      export_method: $build_env  == "production" ? "app-store" : "ad-hoc",
+      output_directory: "./build",
+      output_name: "release.ipa",
+      export_team_id: team_id,
+      xcargs: {
+        :PROVISIONING_PROFILE_SPECIFIER => ENV["sigh_#{app_id}_#{$build_env  == 'production' ? 'appstore' : 'adhoc'}_profile-name"],
+        :DEVELOPMENT_TEAM => team_id
+      },
+      include_bitcode: $build_env  == "production" ? true : false,
+      export_options: {
+        compileBitcode: $build_env  == "production" ? true : false,
+        iCloudContainerEnvironment: 'Production',
+      },
+      silent: true,
+      clean: true
+    )
+  end
+
+  desc "Distribute to App Center."
+  lane :distribute_staging do
+    appcenter_fetch_devices(
+      api_token: ENV["APPCENTER_API_TOKEN"],
+      owner_name: ENV["APPCENTER_OWNER_NAME"],
+      app_name: ENV["APPCENTER_IOS_APP_NAME"],
+      destinations: "*", # Default is 'Collaborators', use '*' for all distribution groups
+      devices_file: "./fastlane/metadata/devices.txt", # Default. If you customize, the extension must be .txt
+    )
+    appcenter_upload(
+      api_token: ENV["APPCENTER_API_TOKEN"],
+      owner_name: ENV["APPCENTER_OWNER_NAME"],
+      app_name: ENV["APPCENTER_IOS_APP_NAME"],
+      ipa: "./build/release.ipa",
+      notify_testers: true,
+    )
+  end
+
+  desc "Distribute to TestFlight"
+  lane :distribute_production do
+    upload_to_testflight(
+      username: apple_id,
+      team_id: team_id,
+      app_identifier: app_id,
+      ipa: "./build/release.ipa",
+      skip_submission: true,
+      distribute_external: true,
+      skip_waiting_for_build_processing: true,
+      changelog: ""
+    )
+  end
+end
+
+# Platform Android
+platform :android do
+  version = package["version"]
+  gradle_file = "./android/app/build.gradle"
+  # apk_path = $build_env  == 'production' ? "./android/app/build/outputs/bundle/release/app-release.aab" : "./android/app/build/outputs/bundle/staging/app-staging.aab"
+  build_task = "assemble"  # "bundle" to .aab or "assemble to .apk"
+
+  apk_path = getApkPath()
+  build_type = getBuildType()
+
+  desc "Bump version and build number."
+  lane :bump_versions do
+    android_set_version_code(
+      version_code: Time.now.to_i,
+      gradle_file: gradle_file
+    )
+    android_set_version_name(
+      version_name: version,
+      gradle_file: gradle_file
+    )
+  end
+
+  # Build APK is required as App Center doesn't support .aab file yet
+  desc "Build Android APK or AAB"
+  lane :build do
+    bump_versions
+    gradle(task: "clean", project_dir: "./android")
+    gradle(task: build_task, build_type: build_type, project_dir: "./android")
+  end
+
+  desc "Distribute to App Center"
+  lane :distribute_staging do
+    appcenter_upload(
+      api_token: ENV["APPCENTER_API_TOKEN"],
+      owner_name: ENV["APPCENTER_OWNER_NAME"],
+      app_name: ENV["APPCENTER_ANDROID_APP_NAME"],
+      # apk: "./android/app/build/outputs/apk/release/app-release.apk"
+      notify_testers: true,
+      apk: apk_path
+    )
+  end
+end
