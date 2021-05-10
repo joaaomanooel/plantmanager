@@ -1,9 +1,28 @@
 /* eslint-disable no-nested-ternary */
 import { version } from './package.json';
 
-const name = 'PlantManager';
-const displayName = 'PlantManager';
-const bundle = "com.plantmanager";
+const { FASTLANE_BUILD_ENVIRONMENT = 'qa' } = process.env;
+
+const name =
+  FASTLANE_BUILD_ENVIRONMENT === 'staging'
+    ? 'PlantManager-staging'
+    : FASTLANE_BUILD_ENVIRONMENT === 'qa'
+    ? 'PlantManager-qa'
+    : 'PlantManager';
+
+const bundle =
+  FASTLANE_BUILD_ENVIRONMENT === 'staging'
+    ? 'com.plantmanager.staging'
+    : FASTLANE_BUILD_ENVIRONMENT === 'qa'
+    ? 'com.plantmanager.qa'
+    : 'com.plantmanager';
+
+const displayName =
+  FASTLANE_BUILD_ENVIRONMENT === 'staging'
+    ? 'PlantManager Staging'
+    : FASTLANE_BUILD_ENVIRONMENT === 'qa'
+    ? 'PlantManager QA'
+    : 'PlantManager';
 
 export default {
   name,
