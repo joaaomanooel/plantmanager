@@ -25,9 +25,6 @@ jobs:
       - name: Install packages
         run: yarn config set network-timeout 100000 & yarn --frozen-lockfile
 
-      - name: Install packages
-        run: yarn global add expo-cli
-
       - name: Expo Login
         run: yarn expo login --non-interactive -u joaaomanooel
 
@@ -54,5 +51,5 @@ jobs:
           APPCENTER_OWNER_NAME: ${{ secrets.APPCENTER_OWNER_NAME }}
           APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
-          EXPO_CLI_PASSWORD: ${{ secrets.EXPO_TOKEN }}
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           FASTLANE_BUILD_ENVIRONMENT: "production"
