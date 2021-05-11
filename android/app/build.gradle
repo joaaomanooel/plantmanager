@@ -166,7 +166,7 @@ android {
             matchingFallbacks = ['release']
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
-            resValue "string", "app_name", "Fale CMPC QA"
+            resValue "string", "app_name", "PlantManager QA"
             resValue "string", "expo_update_url", "https://exp.host/@joaaomanooel/PlantManager-qa"
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             buildConfigField "String", "BUILD_VARIANT", "\"qa\""
@@ -176,14 +176,14 @@ android {
             matchingFallbacks = ['release']
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
-            resValue "string", "app_name", "Fale CMPC Staging"
+            resValue "string", "app_name", "PlantManager Staging"
             resValue "string", "expo_update_url", "https://exp.host/@joaaomanooel/PlantManager-staging"
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             buildConfigField "String", "BUILD_VARIANT", "\"staging\""
         }
         release {
             signingConfig signingConfigs.debug
-            resValue "string", "app_name", "Fale CMPC"
+            resValue "string", "app_name", "PlantManager"
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             resValue "string", "expo_update_url", "https://exp.host/@joaaomanooel/PlantManager"
