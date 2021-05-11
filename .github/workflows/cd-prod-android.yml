@@ -19,6 +19,11 @@ jobs:
         with:
           ruby-version: "2.x"
 
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-version: 4.x
+          expo-token: ${{ secrets.EXPO_TOKEN }}
+
       - name: Install Fastlane
         run: bundle install
 
