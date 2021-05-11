@@ -26,7 +26,7 @@ jobs:
         run: yarn config set network-timeout 100000 & yarn --frozen-lockfile
 
       - name: Expo Login
-        run: yarn expo login --non-interactive -u joaaomanooel
+        run: yarn expo login
 
       - name: Distribute Expo
         run: yarn expo publish --non-interactive
