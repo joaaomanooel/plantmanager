@@ -20,7 +20,7 @@
     android:screenOrientation="portrait"
     android:requestLegacyExternalStorage="true"
   >
-    <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="https://exp.host/@joaaomanooel/PlantManager" />
+    <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="@string/expo_update_url" />
     <meta-data android:name="expo.modules.updates.EXPO_SDK_VERSION" android:value="41.0.0" />
     <meta-data android:name="expo.modules.updates.EXPO_RELEASE_CHANNEL" android:value="default" />
 
