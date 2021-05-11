@@ -30,9 +30,6 @@ jobs:
       - name: Install packages
         run: yarn config set network-timeout 100000 & yarn --frozen-lockfile
 
-      - name: Distribute Expo
-        run: yarn expo publish --non-interactive
-
       # - name: Create Android Assets Bundle
       #   run: |
       #     yarn react-native bundle \
@@ -48,10 +45,13 @@ jobs:
       - name: Distribute
         run: fastlane android distribute_staging
 
-        env:
-          APPCENTER_ANDROID_APP_NAME: ${{ secrets.APPCENTER_ANDROID_APP_NAME_PROD }}
-          APPCENTER_OWNER_NAME: ${{ secrets.APPCENTER_OWNER_NAME }}
-          APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
-          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-          FASTLANE_BUILD_ENVIRONMENT: "production"
+      - name: Distribute Expo
+        run: yarn expo publish --non-interactive
+
+    env:
+      APPCENTER_ANDROID_APP_NAME: ${{ secrets.APPCENTER_ANDROID_APP_NAME_PROD }}
+      APPCENTER_OWNER_NAME: ${{ secrets.APPCENTER_OWNER_NAME }}
+      APPCENTER_API_TOKEN: ${{ secrets.APPCENTER_API_TOKEN }}
+      FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      FASTLANE_BUILD_ENVIRONMENT: "production"
