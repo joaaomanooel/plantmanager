@@ -25,11 +25,14 @@ jobs:
       - name: Install packages
         run: yarn config set network-timeout 100000 & yarn --frozen-lockfile
 
+      - name: Expo Install
+        run: yarn global add expo-cli
+
       - name: Expo Login
-        run: yarn expo login
+        run: expo login
 
       - name: Distribute Expo
-        run: yarn expo publish --non-interactive
+        run: expo publish --non-interactive
 
       # - name: Create Android Assets Bundle
       #   run: |
