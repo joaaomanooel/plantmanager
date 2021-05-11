@@ -25,6 +25,9 @@ jobs:
       - name: Install packages
         run: yarn config set network-timeout 100000 & yarn --frozen-lockfile
 
+      - name: Install packages
+        run: yarn global add expo-cli
+
       - name: Expo Login
         run: yarn expo login --non-interactive -u joaaomanooel
 
