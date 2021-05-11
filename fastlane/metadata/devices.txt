@@ -1,15 +1,2 @@
 Device ID	Device Name
-1859b09d0c125541ef8288149303f281072eb818	Guilherme Marques de Mattos - iPhone 5	ios
-52b919065d320fecbc749eaebeda3a89529312b5	Guilherme Marques de Mattos - iPhone 5c	ios
-7a8af81883d72e9c181c0ce3a9788e75f0a084ad	marcusjalmusny - iPhone 8	ios
-ee190bf1e21b6692a74f38fc60a5e34ce9e6bf07	marcusjalmusny - iPhone 5s	ios
-4585fec3bfd413a6cbf447795e8f710717901965	Lukas Sabadin Piccini - iPad (3rd gen)	ios
-8728252aaf18f958f7183d3bf022476b15ff46b8	Lukas Sabadin Piccini - iPad (6th gen)	ios
-b13355db51a2adf290e1b46d20dfb893f7a628d4	Lukas Sabadin Piccini - iPad Pro (12.9 inch)	ios
-00008020-001a4cae2e83002e	Leonardo Quevedo - iPad Air (3rd gen)	ios
-6715eb7945e1512bac7705a12d117e6300000000	Leonardo Quevedo - iPad Pro (10.5 inch)	ios
 fe902a1777bf52ff8095f72e9ea57b0000000000	João Manoel Martino Neto - iPhone 11 Pro	ios
-2129be548cf3c8134a469084774accd7487869db	Bruno Rodrigues Buff… - iPhone SE (1st generation)	ios
-784de911c3d6313592feac558ab1d2f0d2fba908	Franciele da Silva Santana Alano - iPhone 7	ios
-00008020-000d58283ac2402e	Julio Cesar Fuhr (CMPC Brasil) - iPhone XR	ios
-00008020-001e7d601ad9002e	Marília Balbé - iPhone XR	ios
