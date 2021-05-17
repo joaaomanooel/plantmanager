@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler';
+import '@/config/reactotronConfig';
 import { registerRootComponent } from 'expo';
 
 import App from './src';
