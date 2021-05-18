@@ -61,7 +61,7 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected @Nullable String getJSBundleFile() {
-      if (BuildConfig.DEBUG) {
+      if (BuildConfig.BUILD_VARIANT.equals("debug")) {
         return super.getJSBundleFile();
       } else {
         return UpdatesController.getInstance().getLaunchAssetFile();
@@ -70,7 +70,7 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected @Nullable String getBundleAssetName() {
-      if (BuildConfig.DEBUG) {
+      if (BuildConfig.BUILD_VARIANT.equals("debug")) {
         return super.getBundleAssetName();
       } else {
         return UpdatesController.getInstance().getBundleAssetName();
@@ -88,7 +88,7 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
 
-    if (!BuildConfig.DEBUG) {
+    if (!(BuildConfig.BUILD_VARIANT.equals("debug"))) {
       UpdatesController.initialize(this);
     }
 
@@ -104,7 +104,7 @@ public class MainApplication extends Application implements ReactApplication {
    */
   private static void initializeFlipper(
       Context context, ReactInstanceManager reactInstanceManager) {
-    if (BuildConfig.DEBUG) {
+    if (BuildConfig.BUILD_VARIANT.equals("debug")) {
       try {
         /*
          We use reflection here to pick up the class that initializes Flipper,

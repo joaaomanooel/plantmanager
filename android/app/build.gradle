@@ -160,6 +160,8 @@ android {
             applicationIdSuffix ".debug"
             signingConfig signingConfigs.debug
             resValue "string", "app_name", "PlantManager Debug"
+            buildConfigField "String", "BUILD_VARIANT", "\"debug\""
+            resValue "string", "expo_update_url", "https://exp.host/@joaaomanooel/PlantManager-debug"
         }
         qa {
             applicationIdSuffix ".qa"
@@ -187,7 +189,7 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             resValue "string", "expo_update_url", "https://exp.host/@joaaomanooel/PlantManager"
-            buildConfigField "String", "BUILD_VARIANT", "\"staging\""
+            buildConfigField "String", "BUILD_VARIANT", "\"release\""
         }
     }
 
