@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { colors, navigations } from '@/constants';
 
+// -- IMPORT SCREEN --
 import Wellcome from '@/screens/Wellcome'
 import UserIndentification from '@/screens/UserIndentification'
 import Confirmation from '@/screens/Confirmation'
