@@ -6,15 +6,19 @@ import Reactotron, {
   overlay,
   networking
 } from 'reactotron-react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const handleReactotron = () => {
   const tron = Reactotron.configure({ name: 'PlantManager' })
+    .setAsyncStorageHandler(AsyncStorage)
     .use(asyncStorage())
     .use(overlay())
     .use(trackGlobalErrors())
     .use(openInEditor())
     .use(networking())
-    .useReactNative({})
+    .useReactNative({
+      asyncStorage: true
+    })
     .connect();
 
   tron.clear();

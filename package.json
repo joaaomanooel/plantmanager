@@ -9,11 +9,12 @@
     "android:clean": "cd android && ./gradlew clean",
     "ios": "react-native run-ios --configuration Debug --scheme Debug",
     "ios:release": "react-native run-ios --configuration Release --scheme Release",
-    "generate": "yarn plop --plopfile ./generators/plopfile.js",
+    "generate": "plop --plopfile ./generators/plopfile.js",
     "lint": "eslint ."
   },
   "dependencies": {
     "@expo-google-fonts/jost": "^0.1.0",
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.4",
@@ -27,6 +28,7 @@
     "react-dom": "16.13.1",
     "react-native": "~0.63.4",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-iphone-x-helper": "^1.3.1",
     "react-native-reanimated": "^2.1.0",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.1.1",
@@ -57,6 +59,7 @@
     "plop": "^2.7.4",
     "prettier": "^2.3.0",
     "react-native-dotenv": "^2.5.5",
+    "reactotron-react-native": "^5.0.0",
     "typescript": "^4.2.4"
   },
   "private": true
