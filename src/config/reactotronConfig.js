@@ -4,8 +4,7 @@ import Reactotron, {
   trackGlobalErrors,
   openInEditor,
   overlay,
-  networking,
-  storybook,
+  networking
 } from 'reactotron-react-native';
 
 const handleReactotron = () => {
@@ -15,9 +14,7 @@ const handleReactotron = () => {
     .use(trackGlobalErrors())
     .use(openInEditor())
     .use(networking())
-    .useReactNative({
-      storybook: true
-    })
+    .useReactNative({})
     .connect();
 
   tron.clear();
@@ -26,6 +23,6 @@ const handleReactotron = () => {
   return tron;
 };
 
-const reactotron = (__DEV__) ? handleReactotron() : undefined;
+const reactotron = __DEV__ ? handleReactotron() : undefined;
 
 export default reactotron;

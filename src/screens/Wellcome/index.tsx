@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { images, navigations } from '@/constants';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native';
 import { Container, Title, SubTitle, Button, ButtonIcon, Image, Wrapper } from './styles';
 
 export default () => {
@@ -26,4 +26,4 @@ export default () => {
       </Wrapper>
     </Container>
   );
-}
+};

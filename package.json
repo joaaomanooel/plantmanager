@@ -9,7 +9,8 @@
     "android:clean": "cd android && ./gradlew clean",
     "ios": "react-native run-ios --configuration Debug --scheme Debug",
     "ios:release": "react-native run-ios --configuration Release --scheme Release",
-    "generate": "yarn plop --plopfile ./generators/plopfile.js"
+    "generate": "yarn plop --plopfile ./generators/plopfile.js",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@expo-google-fonts/jost": "^0.1.0",
@@ -40,11 +41,19 @@
     "@types/react-native": "^0.64.4",
     "@types/styled-components": "^5.1.9",
     "@types/styled-components-react-native": "^5.1.1",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-styled-components": "^1.12.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "expo-cli": "^4.4.3",
     "plop": "^2.7.4",
+    "prettier": "^2.3.0",
     "react-native-dotenv": "^2.5.5",
     "typescript": "^4.2.4"
   },

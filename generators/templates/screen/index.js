@@ -19,7 +19,8 @@ const addActions = [
     type: 'modify',
     path: '../src/navigation/index.tsx',
     pattern: new RegExp('(</Stack.Navigator>)', 'g'),
-    template: "\t<Stack.Screen name={navigations.{{pascalCase name}}\b} component={\b{{pascalCase name}}\b} />\n\t\t$1"
+    template:
+      '\t<Stack.Screen name={ navigations.{{pascalCase name}} } component={ {{pascalCase name}} } />\n\t\t$1'
   },
   {
     type: 'modify',
@@ -29,8 +30,8 @@ const addActions = [
   }
 ];
 
-const actions = [...addActions]
+const actions = [...addActions];
 const description = 'application screen logic';
 const prompts = [{ type: 'input', name: 'name', message: 'screen name please' }];
 
-module.exports = (plop) => plop.setGenerator('screen', { description, prompts, actions })
+module.exports = (plop) => plop.setGenerator('screen', { description, prompts, actions });

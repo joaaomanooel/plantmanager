@@ -35,27 +35,27 @@ export default {
     slug: name,
     version,
     assetBundlePatterns: ['**/*'],
-    orientation: "portrait",
+    orientation: 'portrait',
     updates: {
       fallbackToCacheTimeout: 0
     },
     splash: {
-      image: "./assets/splash.png",
-      backgroundColor: "#ffffff",
-      resizeMode: "contain",
-    },
+      image: './assets/splash.png',
+      backgroundColor: '#ffffff',
+      resizeMode: 'contain'
+    }
   },
   android: {
     publishManifestPath: 'android/app/src/main/assets/shell-app-manifest.json',
     publishBundlePath: 'android/app/src/main/assets/shell-app.bundle',
-    package: bundle,
+    package: bundle
   },
   ios: {
     publishManifestPath: 'ios/cmpc/Supporting/shell-app-manifest.json',
     publishBundlePath: 'ios/cmpc/Supporting/shell-app.bundle',
-    package: bundle,
+    package: bundle
   },
   web: {
-    favicon: "./assets/favicon.png"
+    favicon: './assets/favicon.png'
   }
 };

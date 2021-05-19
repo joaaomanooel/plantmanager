@@ -18,5 +18,5 @@ export default () => {
         </ButtonContainer>
       </Wrapper>
     </Container>
-  )
+  );
 };

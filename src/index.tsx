@@ -7,7 +7,7 @@ import { useFonts, Jost_400Regular, Jost_600SemiBold } from '@expo-google-fonts/
 import Navigation from '@/navigation';
 
 export default function App() {
-  const [fontsLoaded] = useFonts({ Jost_400Regular, Jost_600SemiBold })
+  const [fontsLoaded] = useFonts({ Jost_400Regular, Jost_600SemiBold });
 
   useEffect(() => {
     async function updateApp() {
@@ -19,7 +19,7 @@ export default function App() {
     }
 
     updateApp();
-  }, [])
+  }, []);
 
   if (!fontsLoaded) return <AppLoading />;
 

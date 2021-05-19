@@ -13,7 +13,7 @@ import {
   Input,
   Title,
   TitleContainer,
-  Wrapper,
+  Wrapper
 } from './styles';
 
 export default () => {
@@ -37,7 +37,7 @@ export default () => {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <Wrapper>
             <TitleContainer>
-              <Emoji>{!!username ? '😄' : '😀'}</Emoji>
+              <Emoji>{username ? '😄' : '😀'}</Emoji>
               <Title>{'Como podemos\n chamar você?'}</Title>
             </TitleContainer>
 
@@ -59,4 +59,3 @@ export default () => {
     </Container>
   );
 };
-

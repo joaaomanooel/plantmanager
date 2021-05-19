@@ -44,7 +44,7 @@ export const Button = styled(TouchableOpacity)`
 export const ButtonIcon = styled(Feather).attrs(() => ({
   size: layout.scale() * 32,
   name: 'chevron-right',
-  color: colors.white,
+  color: colors.white
 }))``;
 
 export const Image = styled.Image`

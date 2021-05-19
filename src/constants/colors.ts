@@ -1,4 +1,4 @@
-export default ({
+export default {
   green: '#32B768',
   green_dark: '#2B7A4B',
   green_light: '#DAF2E4',
@@ -15,5 +15,5 @@ export default ({
   blue: '#3D7199',
   blue_light: '#EBF6FF',
 
-  red: '#E83F5B',
-});
+  red: '#E83F5B'
+};

@@ -35,4 +35,3 @@ export const ButtonContainer = styled.View`
   margin-top: ${layout.scale() * 16}px;
   padding: ${layout.scale() * 24}px;
 `;
-

@@ -22,8 +22,8 @@ const addActions = [
   }
 ];
 
-const actions = [...addActions]
+const actions = [...addActions];
 const description = 'application component logic';
 const prompts = [{ type: 'input', name: 'name', message: 'component name please' }];
 
-module.exports = (plop) => plop.setGenerator('component', { description, prompts, actions })
+module.exports = (plop) => plop.setGenerator('component', { description, prompts, actions });
