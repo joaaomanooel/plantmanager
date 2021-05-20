@@ -31,6 +31,8 @@ const highShadow = {
   elevation: 15
 };
 
+const screenPadding = getScale() * 32;
+
 export default {
   screenWidth: width,
   screenHeight: height,
@@ -39,5 +41,6 @@ export default {
   scale: getScale,
   statusBarHeight: Constants.statusBarHeight,
   highShadow,
+  screenPadding,
   shadow
 };
