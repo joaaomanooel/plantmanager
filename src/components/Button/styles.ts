@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
-import TouchableOpacity from '../TouchableOpacity';
 import { colors, layout, fonts } from '@/constants';
+
+import TouchableOpacity from '../TouchableOpacity';
+import { TextProps } from './interfaces';
 
 export const Container = styled(TouchableOpacity)`
   border-radius: ${layout.scale() * 16}px;
@@ -11,8 +13,8 @@ export const Container = styled(TouchableOpacity)`
   opacity: ${({ disabled }) => (!disabled ? 1 : 0.5)};
 `;
 
-export const ButtonText = styled.Text`
+export const ButtonText = styled.Text<TextProps>`
+  font-family: ${({ fontFamily }) => fontFamily || fonts.heading};
+  color: ${({ color }) => color || colors.white};
   font-size: ${layout.scale() * 16}px;
-  font-family: ${fonts.heading};
-  color: ${colors.white};
 `;

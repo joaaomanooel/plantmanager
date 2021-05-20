@@ -1,16 +1,13 @@
 import React from 'react';
-import { TouchableOpacityProps, StyleProp, TextStyle } from 'react-native';
+import { ButtonProps } from './interfaces';
 import { Container, ButtonText } from './styles';
 
-interface ButtonProps extends TouchableOpacityProps {
-  textStyle?: StyleProp<TextStyle>;
-  text: string;
-}
-
-export default React.memo(({ text, textStyle = {}, ...props }: ButtonProps) => {
+export default React.memo(({ text, fontFamily, textColor, ...props }: ButtonProps) => {
   return (
     <Container {...props}>
-      <ButtonText style={textStyle}>{text}</ButtonText>
+      <ButtonText color={textColor} fontFamily={fontFamily}>
+        {text}
+      </ButtonText>
     </Container>
   );
 });
