@@ -1,7 +1,9 @@
 import styled from 'styled-components/native';
 import { colors, layout, fonts } from '@/constants';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
+  padding-top: ${getStatusBarHeight()}px;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
