@@ -10,7 +10,8 @@
     "ios": "react-native run-ios --configuration Debug --scheme Debug",
     "ios:release": "react-native run-ios --configuration Release --scheme Release",
     "generate": "plop --plopfile ./generators/plopfile.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "server": "json-server ./src/services/server.json --host 192.168.0.10 --port 3333"
   },
   "dependencies": {
     "@expo-google-fonts/jost": "^0.1.0",
@@ -18,6 +19,7 @@
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.4",
+    "axios": "^0.21.1",
     "expo": "~41.0.1",
     "expo-app-loading": "^1.0.3",
     "expo-font": "~9.1.0",
@@ -32,15 +34,19 @@
     "react-native-reanimated": "^2.1.0",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.1.1",
+    "react-native-svg": "12.1.0",
     "react-native-unimodules": "~0.13.3",
     "react-native-web": "~0.13.12",
     "styled-components": "^5.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@types/react": "^17.0.4",
+    "@types/axios": "^0.14.0",
+    "@types/jest": "^26.0.23",
+    "@types/react": "^17.0.6",
     "@types/react-dom": "^17.0.3",
-    "@types/react-native": "^0.64.4",
+    "@types/react-native": "^0.64.5",
+    "@types/react-test-renderer": "^17.0.1",
     "@types/styled-components": "^5.1.9",
     "@types/styled-components-react-native": "^5.1.1",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
@@ -55,6 +61,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "expo-cli": "^4.4.3",
     "husky": "^6.0.0",
+    "json-server": "^0.16.3",
     "lint-staged": "^11.0.0",
     "plop": "^2.7.4",
     "prettier": "^2.3.0",
