@@ -3,5 +3,5 @@ export default {
   heading: 'Jost_600SemiBold',
   text: 'Jost_400Regular',
   light: 'Jost_300Light',
-  medium: 'Jost_500Medium'
+  medium: 'Jost_500Medium',
 };

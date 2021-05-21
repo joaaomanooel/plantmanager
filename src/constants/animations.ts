@@ -1,3 +1,3 @@
 export default {
-  load: require('@/assets/animations/load')
+  load: require('@/assets/animations/load'),
 };

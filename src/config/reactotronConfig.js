@@ -4,7 +4,7 @@ import Reactotron, {
   trackGlobalErrors,
   openInEditor,
   overlay,
-  networking
+  networking,
 } from 'reactotron-react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -16,9 +16,7 @@ const handleReactotron = () => {
     .use(trackGlobalErrors())
     .use(openInEditor())
     .use(networking())
-    .useReactNative({
-      asyncStorage: true
-    })
+    .useReactNative({ asyncStorage: true })
     .connect();
 
   tron.clear();

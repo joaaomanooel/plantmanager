@@ -19,7 +19,7 @@ const shadow = {
   shadowOffset: { width: 0, height: 1 },
   shadowOpacity: 0.22,
   shadowRadius: 2.22,
-  elevation: 3
+  elevation: 3,
 };
 
 const highShadow = {
@@ -28,7 +28,7 @@ const highShadow = {
   shadowOpacity: 0.4,
   shadowRadius: 8,
 
-  elevation: 15
+  elevation: 15,
 };
 
 const screenPadding = getScale() * 32;
@@ -42,5 +42,5 @@ export default {
   statusBarHeight: Constants.statusBarHeight,
   highShadow,
   screenPadding,
-  shadow
+  shadow,
 };

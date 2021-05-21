@@ -32,15 +32,15 @@ const styles = StyleSheet.create({
     paddingBottom: layout.scale() * 5,
     paddingHorizontal: layout.screenPadding,
     height: layout.scale() * 40,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   plantsList: {
-    paddingBottom: getBottomSpace()
+    paddingBottom: getBottomSpace(),
   },
   plantListColumn: {
     justifyContent: 'space-between',
-    paddingVertical: 10
-  }
+    paddingVertical: 10,
+  },
 });
 
 export const PlantsListWapper = styled.View`
@@ -51,11 +51,11 @@ export const PlantsListWapper = styled.View`
 
 export const PlantsList = styled(FlatList as new () => FlatList<IPlants>).attrs(() => ({
   contentContainerStyle: styles.plantsList,
-  columnWrapperStyle: styles.plantListColumn
+  columnWrapperStyle: styles.plantListColumn,
 }))`
   flex: 1;
 `;
 
 export const EnvironmentsList = styled(FlatList as new () => FlatList<IEnvironments>).attrs(() => ({
-  contentContainerStyle: styles.environmentsList
+  contentContainerStyle: styles.environmentsList,
 }))``;

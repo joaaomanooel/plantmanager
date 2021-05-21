@@ -37,7 +37,7 @@ export const Title = styled.Text`
 `;
 
 export const Input = styled.TextInput.attrs(() => ({
-  placeholderTextColor: colors.body_light
+  placeholderTextColor: colors.body_light,
 }))<TextInputProps>`
   border-color: ${({ isHighlighted }) => (isHighlighted ? colors.green : colors.gray)};
   border-bottom-width: ${layout.scale() * 1}px;

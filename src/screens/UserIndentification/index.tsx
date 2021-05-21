@@ -13,7 +13,7 @@ import {
   Input,
   Title,
   TitleContainer,
-  Wrapper
+  Wrapper,
 } from './styles';
 
 export default () => {

@@ -6,7 +6,7 @@ module.exports = function babelConfig(api) {
       ['babel-plugin-styled-components'],
       ['module:react-native-dotenv'],
       ['react-native-reanimated/plugin'],
-      ['module-resolver', { alias: { '@/root': '.', '@': './src' } }]
-    ]
+      ['module-resolver', { alias: { '@/root': '.', '@': './src' } }],
+    ],
   };
 };

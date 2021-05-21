@@ -14,7 +14,7 @@ import {
   PlantsList,
   PlantsListWapper,
   SubTitle,
-  Title
+  Title,
 } from './styles';
 
 const allEnvironments = { key: 'all', title: 'Todos' };
@@ -42,7 +42,7 @@ export default () => {
     const { data } = await plantService.getAll({ page: 1 });
 
     if (!data) return setLoading(false);
-    if (page > 1) setPlants((oldValue) => [...oldValue, ...data]);
+    if (page > 1) setPlants(oldValue => [...oldValue, ...data]);
 
     setPlants(data);
   }, [page]);
@@ -60,7 +60,7 @@ export default () => {
     if (distance < 1) return;
 
     setLoadingMore(true);
-    setPage((oldValue) => oldValue + 1);
+    setPage(oldValue => oldValue + 1);
   }, []);
 
   const handleOnRefreshControl = useCallback(async () => {
@@ -88,7 +88,7 @@ export default () => {
   const filterPlants = useCallback(() => {
     if (environmentSelected === allEnvironments.key) return setFilteredPlants(plants);
 
-    const filtered = plants.filter((plant) => plant.environments.includes(environmentSelected));
+    const filtered = plants.filter(plant => plant.environments.includes(environmentSelected));
     setFilteredPlants(filtered);
   }, [environmentSelected, plants]);
 
@@ -118,7 +118,7 @@ export default () => {
             />
           )}
           showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.key}
+          keyExtractor={item => item.key}
           data={environments}
           horizontal={true}
         />
@@ -126,7 +126,7 @@ export default () => {
       <PlantsListWapper>
         <PlantsList
           renderItem={({ item }) => <PlantCard key={item.id} data={item} />}
-          keyExtractor={(item) => `${item.id}-${item.name}`}
+          keyExtractor={item => `${item.id}-${item.name}`}
           showsVerticalScrollIndicator={false}
           refreshControl={handleRefresh()}
           data={filteredPlants}
