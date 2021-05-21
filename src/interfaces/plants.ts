@@ -1,4 +1,3 @@
-import { IEnvironments } from './environments';
 import { IFrequency } from './frequency';
 
 export interface IPlants {
@@ -7,6 +6,6 @@ export interface IPlants {
   about: string;
   water_tips: string;
   photo: string;
-  environments: IEnvironments[];
+  environments: [string];
   frequency: IFrequency[];
 }
