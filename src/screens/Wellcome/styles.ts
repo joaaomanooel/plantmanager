@@ -41,13 +41,13 @@ export const Button = styled(TouchableOpacity)`
   align-items: center;
 `;
 
+export const Image = styled.Image`
+  height: ${layout.scale() * 288}px;
+  resize-mode: contain;
+`;
+
 export const ButtonIcon = styled(Feather).attrs(() => ({
   size: layout.scale() * 32,
   name: 'chevron-right',
   color: colors.white
 }))``;
-
-export const Image = styled.Image`
-  height: ${layout.scale() * 288}px;
-  resize-mode: contain;
-`;

@@ -7,7 +7,7 @@ export default () => {
   const { navigate } = useNavigation();
 
   const handleButton = useCallback(() => {
-    navigate(navigations.UserIndentification);
+    return navigate(navigations.UserIndentification);
   }, [navigate]);
 
   return (
