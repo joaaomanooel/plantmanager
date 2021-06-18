@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import * as Updates from 'expo-updates';
 import AppLoading from 'expo-app-loading';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 import {
   useFonts,
   Jost_300Light,
@@ -11,6 +13,10 @@ import {
 } from '@expo-google-fonts/jost';
 
 import Navigation from '@/navigation';
+import createStore from '@/redux';
+
+const { store, persistor } = createStore();
+export { store };
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -37,7 +43,11 @@ export default function App() {
   return (
     <>
       <StatusBar style="dark" />
-      <Navigation />
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <Navigation />
+        </PersistGate>
+      </Provider>
     </>
   );
 }

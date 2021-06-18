@@ -25,6 +25,6 @@ export const Title = styled.Text`
 `;
 
 export const Username = styled(Title)`
-  line-height: ${layout.scale() * 36};
+  line-height: ${layout.scale() * 36}px;
   font-family: ${fonts.heading};
 `;

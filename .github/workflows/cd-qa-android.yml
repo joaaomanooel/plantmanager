@@ -1,0 +1,33 @@
+name: Android - QA
+
+on:
+  push:
+    branches: [release/**]
+
+jobs:
+  qa-android:
+    name: Android - Deploy QA
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "2.x"
+
+      - name: Install Fastlane
+        run: bundle install
+
+      - name: Install packages
+        run: yarn install
+
+      - name: Deploy QA
+        run: yarn android:deploy_qa
+
+        env:
+          FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
