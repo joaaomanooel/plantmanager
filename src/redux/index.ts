@@ -5,9 +5,10 @@ import rootSaga from '@/sagas';
 import configureStore from './configureStore';
 
 const reducers = combineReducers({
+  environments: require('./environments').default,
   fetch: require('./fetch').default,
   plants: require('./plants').default,
-  environments: require('./environments').default,
+  user: require('./user').default,
   network,
 });
 

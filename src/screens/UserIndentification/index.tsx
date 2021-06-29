@@ -1,61 +1,16 @@
-import React, { useCallback, useState } from 'react';
-import { Keyboard, Platform, TouchableWithoutFeedback } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { connect } from 'react-redux';
+import * as userActions from '@/redux/user';
+import { IUser } from '@/interfaces';
 
-import { Button } from '@/components';
-import { navigations } from '@/constants';
+import UserIndentification from './UserIndentification';
 
-import {
-  ButtonContainer,
-  Container,
-  Emoji,
-  Form,
-  Input,
-  Title,
-  TitleContainer,
-  Wrapper,
-} from './styles';
+const mapStateToProps = state => ({
+  isConnected: state.network.isConnected,
+  user: state.user.data,
+});
 
-export default () => {
-  const [isFocused, seIsFocused] = useState<boolean>(false);
-  const [username, setUsername] = useState<string>();
+const mapDispatchToProps = dispatch => ({
+  setUser: (params: IUser) => dispatch(userActions.setUser(params)),
+});
 
-  const { navigate } = useNavigation();
-
-  const handleInputBlur = useCallback(() => seIsFocused(false), [seIsFocused]);
-  const handleInputFocus = useCallback(() => seIsFocused(true), [seIsFocused]);
-
-  const handleButton = useCallback(() => {
-    navigate(navigations.Confirmation);
-  }, [navigate]);
-
-  const handleInput = useCallback((value: string) => setUsername(value), [setUsername]);
-
-  return (
-    <Container>
-      <Form behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <Wrapper>
-            <TitleContainer>
-              <Emoji>{username ? '😄' : '😀'}</Emoji>
-              <Title>{'Como podemos\n chamar você?'}</Title>
-            </TitleContainer>
-
-            <Input
-              placeholder="Digite um nome"
-              onChangeText={handleInput}
-              onFocus={handleInputFocus}
-              onBlur={handleInputBlur}
-              isHighlighted={isFocused || !!username}
-              value={username}
-            />
-
-            <ButtonContainer>
-              <Button disabled={!username} onPress={handleButton} text="Confirmar" />
-            </ButtonContainer>
-          </Wrapper>
-        </TouchableWithoutFeedback>
-      </Form>
-    </Container>
-  );
-};
+export default connect(mapStateToProps, mapDispatchToProps)(UserIndentification);

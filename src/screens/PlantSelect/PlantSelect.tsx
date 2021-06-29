@@ -58,7 +58,7 @@ export default ({
   }, [environmentSelected, filterPlants, plants]);
 
   const handleFetchMore = (distance: number) => {
-    if ((!loadingPlants || !loadingMore) && distance < 1) {
+    if (!loadingPlants && !loadingMore && distance > 1) {
       setPage(page + 1);
 
       setLoadingMore(true);

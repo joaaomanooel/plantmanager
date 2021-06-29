@@ -16,7 +16,7 @@ export default () => (
   <NavigationContainer>
     <Stack.Navigator
       screenOptions={{ cardStyle: { backgroundColor: colors.white } }}
-      initialRouteName={navigations.PlantSelect}
+      initialRouteName={navigations.Wellcome}
       headerMode="none">
       <Stack.Screen name={navigations.Wellcome} component={Wellcome} />
       <Stack.Screen name={navigations.UserIndentification} component={UserIndentification} />
