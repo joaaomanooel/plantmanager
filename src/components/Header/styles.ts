@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import { colors, layout, fonts } from '@/constants';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import { SvgFromUri } from 'react-native-svg';
 
 export const Container = styled.View`
   padding-top: ${getStatusBarHeight()}px;
@@ -9,8 +10,8 @@ export const Container = styled.View`
   flex-direction: row;
 `;
 
-const imageSize = 56;
-export const Avatar = styled.Image`
+const imageSize = 64;
+export const Avatar = styled(SvgFromUri)`
   border-radius: ${(layout.scale() * imageSize) / 2}px;
   height: ${layout.scale() * imageSize}px;
   width: ${layout.scale() * imageSize}px;

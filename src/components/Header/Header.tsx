@@ -7,9 +7,9 @@ export default React.memo(({ user }: HeaderProps) => {
     <Container>
       <TitleWapper>
         <Title>Olá,</Title>
-        <Username>{user?.username}</Username>
+        <Username>{user.username}</Username>
       </TitleWapper>
-      <Avatar source={{ uri: 'https://avatars.githubusercontent.com/u/17843076?v=4' }} />
+      <Avatar uri={`https://avatars.dicebear.com/api/gridy/${user.username}.svg`} />
     </Container>
   );
 });
