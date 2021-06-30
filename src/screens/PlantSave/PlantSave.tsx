@@ -4,9 +4,9 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import DateTimePicker, { Event } from '@react-native-community/datetimepicker';
 import { format, isBefore } from 'date-fns';
 
-import { images } from '@/constants';
+import { images, navigations } from '@/constants';
 import { Button } from '@/components';
-import { IPlants } from '@/interfaces';
+import { IConfirmationParams, IPlantSaveParams, IPlants } from '@/interfaces';
 
 import {
   AlertLabel,
@@ -23,17 +23,13 @@ import {
   PantInfoWapper,
 } from './styles';
 
-interface Params {
-  plant: IPlants;
-}
-
 export default ({ setPlant }) => {
   const [selectedDateTime, setSelectedDateTime] = useState<Date>(new Date());
   const [showDatePicker, setShowDatePicker] = useState<boolean>(Platform.OS === 'ios');
 
   const { navigate } = useNavigation();
   const route = useRoute();
-  const { plant } = (route.params as Params) || ({} as Params);
+  const { plant } = (route.params as IPlantSaveParams) || {};
 
   const handleChangeTime = (event: Event, dateTime: Date | undefined) => {
     if (Platform.OS === 'android') setShowDatePicker(false);
@@ -52,9 +48,16 @@ export default ({ setPlant }) => {
 
   const handleSavePlant = () => {
     try {
-      setPlant({ ...plant, deteTimeNotification: selectedDateTime });
+      setPlant({ ...plant, dateTimeNotification: selectedDateTime } as IPlants);
 
-      Alert.alert('Planta salva com sucesso! 😍');
+      navigate(navigations.Confirmation, {
+        subtitle:
+          'Fique tranquilo que sempre vamos\n lembrar você de cuidar da sua plantinha\n com bastante amor.',
+        nextScreen: navigations.MyPlants,
+        buttonText: 'Muito obrigado :D',
+        title: 'Tudo certo',
+        icon: 'hug',
+      } as IConfirmationParams);
     } catch (error) {
       Alert.alert('Não foi possivel salvar. 😢');
     }

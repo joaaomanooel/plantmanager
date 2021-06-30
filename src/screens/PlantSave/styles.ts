@@ -15,7 +15,7 @@ export const PantInfoWapper = styled.View`
   justify-content: center;
   background-color: ${colors.shape};
   padding-vertical: ${layout.scale() * 50}px;
-  padding-horizontal: ${layout.scale() * 32}px;
+  padding-horizontal: ${layout.screenPadding}px;
 `;
 
 export const PlantImage = styled(SvgFromUri).attrs(() => ({
@@ -41,7 +41,7 @@ export const PlantAbout = styled.Text`
 
 export const ControllersWapper = styled.View`
   padding-bottom: ${getBottomSpace() || layout.scale() * 20};
-  padding-horizontal: ${layout.scale() * 32}px;
+  padding-horizontal: ${layout.screenPadding}px;
   padding-top: ${layout.scale() * 20}px;
   background-color: ${colors.white};
 `;
