@@ -8,4 +8,12 @@ export interface IPlants {
   photo: string;
   environments: [string];
   frequency: IFrequency[];
+
+  dateTimeNotification: Date;
+}
+
+export interface IStoragePlant {
+  [id: string]: {
+    date: IPlants;
+  };
 }

@@ -4,7 +4,7 @@ import { RefreshControl, View, ActivityIndicator } from 'react-native';
 
 import { EnvironmentsButton, Header, PlantCard, Load } from '@/components';
 import { IEnvironments, IPlants } from '@/interfaces';
-import { colors } from '@/constants';
+import { colors, navigations } from '@/constants';
 
 import {
   Container,
@@ -26,7 +26,7 @@ export default ({
   loadingPlants,
   environments,
 }) => {
-  // const { navigate } = useNavigation();
+  const { navigate } = useNavigation();
 
   const [environmentSelected, setEnvironmentSelected] = useState<string>(allEnvironments.key);
   const [filteredPlants, setFilteredPlants] = useState<IPlants[]>(plants);
@@ -84,6 +84,10 @@ export default ({
     );
   }, [handleOnRefreshControl, loadingRefresh]);
 
+  const handlePlantSelect = (plant: IPlants) => {
+    navigate(navigations.PlantSave, { plant });
+  };
+
   useEffect(() => {
     getEnvironments({});
     getPlants({ page: 1 });
@@ -126,7 +130,9 @@ export default ({
           refreshControl={handleRefresh()}
           showsVerticalScrollIndicator={false}
           keyExtractor={item => String(item.id)}
-          renderItem={({ item }) => <PlantCard data={item} />}
+          renderItem={({ item }) => (
+            <PlantCard data={item} onPress={() => handlePlantSelect(item)} />
+          )}
           onEndReachedThreshold={0.1}
           onEndReached={({ distanceFromEnd }) => handleFetchMore(distanceFromEnd)}
           ListFooterComponent={loadingMore ? <ActivityIndicator color={colors.green} /> : null}
