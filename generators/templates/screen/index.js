@@ -6,6 +6,11 @@ const addActions = [
   },
   {
     type: 'add',
+    path: '../src/screens/{{pascalCase name}}/{{pascalCase name}}.tsx',
+    templateFile: 'templates/screen/screen.tsx.hbs'
+  },
+  {
+    type: 'add',
     path: '../src/screens/{{pascalCase name}}/styles.ts',
     templateFile: 'templates/screen/styles.ts.hbs'
   },
