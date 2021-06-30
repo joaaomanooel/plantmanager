@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Button } from '@/components';
 import { navigations } from '@/constants';
+import { IConfirmationParams } from '@/interfaces';
 
 import {
   ButtonContainer,
@@ -29,7 +30,13 @@ export default ({ setUser }) => {
     if (!username) return Alert.alert('Me diz como chamar você 😥');
 
     setUser({ username });
-    navigate(navigations.Confirmation);
+    navigate(navigations.Confirmation, {
+      subtitle: 'Agora vamos começar a cuidar das suas\n plantinhas com muito cuidado.\n',
+      nextScreen: navigations.PlantSelect,
+      buttonText: 'Começar',
+      title: 'Prontinho',
+      icon: 'smile',
+    } as IConfirmationParams);
   }, [navigate, setUser, username]);
 
   const handleInput = useCallback((value: string) => setUsername(value), [setUsername]);

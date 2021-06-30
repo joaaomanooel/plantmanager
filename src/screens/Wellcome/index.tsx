@@ -1,29 +1,3 @@
-import React, { useCallback } from 'react';
-import { images, navigations } from '@/constants';
-import { useNavigation } from '@react-navigation/native';
-import { Container, Title, SubTitle, Button, ButtonIcon, Image, Wrapper } from './styles';
+import Wellcome from './Wellcome';
 
-export default () => {
-  const { navigate } = useNavigation();
-
-  const handleButton = useCallback(() => {
-    return navigate(navigations.UserIndentification);
-  }, [navigate]);
-
-  return (
-    <Container>
-      <Wrapper>
-        <Title>{'Gerencie\n suas plantas de\n forma fácil'}</Title>
-        <Image source={images.watering} />
-        <SubTitle>
-          {'Não esqueça mais de regar suas\n'}
-          {'plantas. Nós cuidamos de lembrar você\n'}
-          {'sempre que precisar.'}
-        </SubTitle>
-        <Button onPress={handleButton}>
-          <ButtonIcon />
-        </Button>
-      </Wrapper>
-    </Container>
-  );
-};
+export default Wellcome;
