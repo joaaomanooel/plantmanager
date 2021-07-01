@@ -23,7 +23,7 @@ interface InitialState {
 
 const INITIAL_STATE: InitialState = { list: [], storage: [] };
 
-function handlePlantsStorage(state, plant: IPlants): Array<IPlants> {
+function handlePlantsStorage(state: InitialState, plant: IPlants): IPlants[] {
   const addHour = currentPlant => ({
     ...currentPlant,
     hour: format(new Date(currentPlant.dateTimeNotification), 'HH:mm'),
@@ -34,7 +34,7 @@ function handlePlantsStorage(state, plant: IPlants): Array<IPlants> {
   const sortByData = (a: IPlants, b: IPlants) =>
     Math.floor(getTimeValue(a.dateTimeNotification) - getTimeValue(b.dateTimeNotification));
 
-  return [...state.storage, plant].map(addHour).sort(sortByData);
+  return [...state.storage, plant].map(addHour).sort(sortByData) as IPlants[];
 }
 
 export default createReducer(INITIAL_STATE, {

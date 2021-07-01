@@ -4,7 +4,7 @@ import MyPlants from './MyPlants';
 
 const mapStateToProps = state => ({
   isConnected: state.network.isConnected,
-  plantsStorage: state.plants.storage,
+  plantsStoraged: state.plants.storage,
 });
 
 const mapDispatchToProps = dispatch => ({});

@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import { SvgFromUri } from 'react-native-svg';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { colors, layout, fonts } from '@/constants';
+import { TouchableOpacity } from '@/components';
 
 export const Container = styled.View`
   flex: 1;
@@ -40,7 +41,7 @@ export const PlantAbout = styled.Text`
 `;
 
 export const ControllersWapper = styled.View`
-  padding-bottom: ${getBottomSpace() || layout.scale() * 20};
+  padding-bottom: ${getBottomSpace() || layout.scale() * 20}px;
   padding-horizontal: ${layout.screenPadding}px;
   padding-top: ${layout.scale() * 20}px;
   background-color: ${colors.white};
@@ -50,7 +51,7 @@ export const TipsContainer = styled.View`
   background-color: ${colors.blue_light};
   padding: ${layout.scale() * 16}px;
   border-radius: ${layout.scale() * 20}px;
-  bottom: ${layout.scale() * 64};
+  bottom: ${layout.scale() * 64}px;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
@@ -86,7 +87,7 @@ export const DateTimePickerText = styled.Text`
   font-family: ${fonts.text};
 `;
 
-export const DateTimePickerButton = styled.TouchableOpacity`
+export const DateTimePickerButton = styled(TouchableOpacity)`
   padding-vertical: ${layout.scale() * 42}px;
   align-items: center;
   width: 100%;
