@@ -28,7 +28,7 @@ export default ({ plantsStoraged, removePlant }) => {
         new Date().getTime(),
         { locale: ptBR }
       );
-      setNextWaterd(`Não esqueça de reagar a ${plantsStoraged[0].name} à ${nextTime} horas.`);
+      setNextWaterd(`Não esqueça de reagar a ${plantsStoraged[0].name} à ${nextTime}.`);
     }
   }, [plantsStoraged]);
 
@@ -57,7 +57,7 @@ export default ({ plantsStoraged, removePlant }) => {
               renderItem={({ item }) => (
                 <PlantLargeCard handleRemove={handleRemove(item)} data={item} />
               )}
-              keyExtractor={item => String(item.id)}
+              keyExtractor={item => String(item.uuid)}
               showsVerticalScrollIndicator={false}
               data={plantsStoraged}
             />

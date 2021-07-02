@@ -2,6 +2,7 @@ import { IFrequency } from './frequency';
 
 export interface IPlants {
   id: number;
+  uuid: string;
   name: string;
   about: string;
   water_tips: string;

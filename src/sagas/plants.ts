@@ -2,13 +2,15 @@ import { call, put, select } from 'redux-saga/effects';
 import { AxiosResponse } from 'axios';
 import { Alert } from 'react-native';
 import { format } from 'date-fns';
+import { v4 as uuidv4 } from 'uuid';
 
 import * as plantsActions from '@/redux/plants';
 import { plants as plantsServices } from '@/services';
 import { IPlants, IServicesGet } from '@/interfaces';
 
-const addHour = currentPlant => ({
+const addInfo = currentPlant => ({
   ...currentPlant,
+  uuid: uuidv4(),
   hour: format(new Date(currentPlant.dateTimeNotification), 'HH:mm'),
 });
 
@@ -36,7 +38,7 @@ export function* removePlant({ payload }: { type: string; payload: IPlants }) {
     const currentStoragePlants: IPlants[] = yield select(state => state.plants.storage);
 
     const storegedPlants: IPlants[] = currentStoragePlants
-      .filter(plant => plant.id !== payload.id)
+      .filter(plant => plant.uuid !== payload.uuid)
       .sort(sortByData);
 
     yield put(plantsActions.removePlantSuccess(storegedPlants));
@@ -51,11 +53,12 @@ export function* savePlant({ payload }: { type: string; payload: IPlants }) {
     const currentStoragePlants: IPlants[] = yield select(state => state.plants.storage);
 
     const storegedPlants: IPlants[] = [...currentStoragePlants, payload]
-      .map(addHour)
+      .map(addInfo)
       .sort(sortByData);
 
     yield put(plantsActions.savePlantSuccess(storegedPlants));
   } catch (error) {
+    console.log('[SAVE ERROR]:', error);
     Alert.alert('Não foi possivel salvar! 😥');
     yield put(plantsActions.savePlantFailure());
   }
