@@ -4,9 +4,9 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import DateTimePicker, { Event } from '@react-native-community/datetimepicker';
 import { format, isBefore } from 'date-fns';
 
-import { images } from '@/constants';
+import { images, navigations } from '@/constants';
 import { Button } from '@/components';
-import { IPlants } from '@/interfaces';
+import { IConfirmationParams, IPlantSaveParams, IPlants } from '@/interfaces';
 
 import {
   AlertLabel,
@@ -21,19 +21,16 @@ import {
   TipsImage,
   TipText,
   PantInfoWapper,
+  Scroll,
 } from './styles';
 
-interface Params {
-  plant: IPlants;
-}
-
-export default ({ setPlant }) => {
+export default ({ savePlant }) => {
   const [selectedDateTime, setSelectedDateTime] = useState<Date>(new Date());
   const [showDatePicker, setShowDatePicker] = useState<boolean>(Platform.OS === 'ios');
 
   const { navigate } = useNavigation();
   const route = useRoute();
-  const { plant } = (route.params as Params) || ({} as Params);
+  const { plant } = (route.params as IPlantSaveParams) || {};
 
   const handleChangeTime = (event: Event, dateTime: Date | undefined) => {
     if (Platform.OS === 'android') setShowDatePicker(false);
@@ -52,48 +49,60 @@ export default ({ setPlant }) => {
 
   const handleSavePlant = () => {
     try {
-      setPlant({ ...plant, deteTimeNotification: selectedDateTime });
+      savePlant({ ...plant, dateTimeNotification: selectedDateTime } as IPlants);
 
-      Alert.alert('Planta salva com sucesso! 😍');
+      navigate(navigations.Confirmation, {
+        subtitle:
+          'Fique tranquilo que sempre vamos\n lembrar você de cuidar da sua plantinha\n com bastante amor.',
+        nextScreen: navigations.MyPlants,
+        buttonText: 'Muito obrigado :D',
+        title: 'Tudo certo',
+        icon: 'hug',
+      } as IConfirmationParams);
     } catch (error) {
       Alert.alert('Não foi possivel salvar. 😢');
     }
   };
 
   return (
-    <Container>
-      <PantInfoWapper>
-        <PlantImage uri={plant.photo} />
+    <Scroll>
+      <Container>
+        <PantInfoWapper>
+          <PlantImage uri={plant.photo} />
 
-        <PlantName>{plant.name}</PlantName>
-        <PlantAbout>{plant.about}</PlantAbout>
-      </PantInfoWapper>
-      <ControllersWapper>
-        <TipsContainer>
-          <TipsImage source={images.waterdrop} />
-          <TipText>{plant.water_tips}</TipText>
-        </TipsContainer>
+          <PlantName>{plant.name}</PlantName>
+          <PlantAbout>{plant.about}</PlantAbout>
+        </PantInfoWapper>
+        <ControllersWapper>
+          <TipsContainer>
+            <TipsImage source={images.waterdrop} />
+            <TipText>{plant.water_tips}</TipText>
+          </TipsContainer>
 
-        <AlertLabel>Escoha o melhor horário para ser lembrado:</AlertLabel>
+          <AlertLabel>Escoha o melhor horário para ser lembrado:</AlertLabel>
 
-        {showDatePicker && (
-          <DateTimePicker
-            onChange={handleChangeTime}
-            value={selectedDateTime}
-            display="spinner"
-            mode="time"
-            is24Hour
-          />
-        )}
+          {showDatePicker && (
+            <DateTimePicker
+              onChange={handleChangeTime}
+              value={selectedDateTime}
+              display="spinner"
+              mode="time"
+              is24Hour
+            />
+          )}
 
-        {Platform.OS === 'android' && (
-          <DateTimePickerButton onPress={handleOpenDateTimePickerForAndroid}>
-            <DateTimePickerText>{`Mudar ${format(selectedDateTime, 'HH:mm')}`}</DateTimePickerText>
-          </DateTimePickerButton>
-        )}
+          {Platform.OS === 'android' && (
+            <DateTimePickerButton onPress={handleOpenDateTimePickerForAndroid}>
+              <DateTimePickerText>{`Mudar ${format(
+                selectedDateTime,
+                'HH:mm'
+              )}`}</DateTimePickerText>
+            </DateTimePickerButton>
+          )}
 
-        <Button text="Cadastrar Planta" onPress={handleSavePlant} />
-      </ControllersWapper>
-    </Container>
+          <Button text="Cadastrar Planta" onPress={handleSavePlant} />
+        </ControllersWapper>
+      </Container>
+    </Scroll>
   );
 };

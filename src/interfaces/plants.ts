@@ -2,6 +2,7 @@ import { IFrequency } from './frequency';
 
 export interface IPlants {
   id: number;
+  uuid: string;
   name: string;
   about: string;
   water_tips: string;
@@ -10,6 +11,7 @@ export interface IPlants {
   frequency: IFrequency[];
 
   dateTimeNotification: Date;
+  hour: string;
 }
 
 export interface IStoragePlant {

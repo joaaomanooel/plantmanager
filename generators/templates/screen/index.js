@@ -16,13 +16,13 @@ const addActions = [
   },
   {
     type: 'modify',
-    path: '../src/navigation/index.tsx',
+    path: '../src/navigation/StackNavigation.tsx',
     pattern: /(-- IMPORT SCREEN --)/gi,
     template: "$1\r\nimport {{pascalCase name}} from '@/screens/{{pascalCase name}}';"
   },
   {
     type: 'modify',
-    path: '../src/navigation/index.tsx',
+    path: '../src/navigation/StackNavigation.tsx',
     pattern: new RegExp('(</Stack.Navigator>)', 'g'),
     template:
       '\t<Stack.Screen name={ navigations.{{pascalCase name}} } component={ {{pascalCase name}} } />\n\t\t$1'

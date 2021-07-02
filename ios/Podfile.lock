@@ -238,6 +238,8 @@ PODS:
     - React-jsi (= 0.64.2)
     - React-perflogger (= 0.64.2)
   - React-jsinspector (0.64.2)
+  - react-native-get-random-values (1.7.0):
+    - React-Core
   - react-native-netinfo (6.0.0):
     - React-Core
   - react-native-safe-area-context (3.2.0):
@@ -403,6 +405,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-get-random-values (from `../node_modules/react-native-get-random-values`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -500,6 +503,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-get-random-values:
+    :path: "../node_modules/react-native-get-random-values"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-safe-area-context:
@@ -586,7 +591,7 @@ SPEC CHECKSUMS:
   EXStructuredHeaders: be834496a4d9fd0069cd12ec1cc57b31c6d3b256
   EXUpdates: efe0e8c514dcff06a8fd0b63be6019a6365fb9c7
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: 34ace2580f23eda26db85d04527e5e53c3904e22
+  FBReactNativeSpec: af30818089b4767f1d35bd1f8c8ed70ac940123a
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   lottie-react-native: 4dff8fe8d10ddef9e7880e770080f4a56121397e
@@ -601,6 +606,7 @@ SPEC CHECKSUMS:
   React-jsi: 67747b9722f6dab2ffe15b011bcf6b3f2c3f1427
   React-jsiexecutor: 80c46bd381fd06e418e0d4f53672dc1d1945c4c3
   React-jsinspector: cc614ec18a9ca96fd275100c16d74d62ee11f0ae
+  react-native-get-random-values: 237bffb1c7e05fb142092681531810a29ba53015
   react-native-netinfo: e849fc21ca2f4128a5726c801a82fc6f4a6db50d
   react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
   React-perflogger: 25373e382fed75ce768a443822f07098a15ab737

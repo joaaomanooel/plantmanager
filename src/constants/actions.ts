@@ -6,5 +6,7 @@ const composeActionType = (shortActionName: string) => (e?: ActionsTypes) => {
 
 export default {
   getPlants: composeActionType('GET_PLANTS'),
+  savePlant: composeActionType('SAVE_PLANTS'),
+  removePlant: composeActionType('REMOVE_PLANTS'),
   getEnvironments: composeActionType('GET_ENVIRONMENTS'),
 };

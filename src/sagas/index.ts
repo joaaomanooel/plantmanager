@@ -16,6 +16,8 @@ export default function* root() {
 
     // Plants
     takeLatest(actionsTypes.getPlants('REQUEST'), plantsSagas.getPlants),
+    takeLatest(actionsTypes.savePlant('REQUEST'), plantsSagas.savePlant),
+    takeLatest(actionsTypes.removePlant('REQUEST'), plantsSagas.removePlant),
 
     // Environments
     takeLatest(actionsTypes.getEnvironments('REQUEST'), environmentsSagas.getEnvironments),

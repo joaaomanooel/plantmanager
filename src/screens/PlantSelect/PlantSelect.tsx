@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { RefreshControl, View, ActivityIndicator } from 'react-native';
 
 import { EnvironmentsButton, Header, PlantCard, Load } from '@/components';
-import { IEnvironments, IPlants } from '@/interfaces';
+import { IEnvironments, IPlants, IPlantSaveParams } from '@/interfaces';
 import { colors, navigations } from '@/constants';
 
 import {
@@ -33,7 +33,6 @@ export default ({
 
   const [loadingRefresh, setLoadingRefresh] = useState(false);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [loadedAll, setLoadedAll] = useState(false);
   const [page, setPage] = useState(1);
 
   const filterPlants = useCallback(
@@ -85,7 +84,7 @@ export default ({
   }, [handleOnRefreshControl, loadingRefresh]);
 
   const handlePlantSelect = (plant: IPlants) => {
-    navigate(navigations.PlantSave, { plant });
+    navigate(navigations.PlantSave, { plant } as IPlantSaveParams);
   };
 
   useEffect(() => {
