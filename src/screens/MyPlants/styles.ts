@@ -37,7 +37,7 @@ export const SpotlightImage = styled.Image`
 
 export const SpotlighText = styled.Text`
   padding-horizontal: ${layout.scale() * 16}px;
-  text-align: justify;
+  /* text-align: justify; */
   color: ${colors.blue};
   flex: 1;
 `;
