@@ -10,6 +10,7 @@ export interface IPlants {
   frequency: IFrequency[];
 
   dateTimeNotification: Date;
+  hour: string;
 }
 
 export interface IStoragePlant {
