@@ -32,7 +32,7 @@ export default ({ setUser }) => {
     setUser({ username });
     navigate(navigations.Confirmation, {
       subtitle: 'Agora vamos começar a cuidar das suas\n plantinhas com muito cuidado.\n',
-      nextScreen: navigations.PlantSelect,
+      nextScreen: navigations.Home,
       buttonText: 'Começar',
       title: 'Prontinho',
       icon: 'smile',

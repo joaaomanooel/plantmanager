@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { Alert } from 'react-native';
 import { formatDistance } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
-import { images, navigations } from '@/constants';
+import { images } from '@/constants';
 import { Header, PlantLargeCard } from '@/components';
 import { IPlants } from '@/interfaces';
 
@@ -18,21 +18,26 @@ import {
   SpotlightImage,
 } from './styles';
 
-export default ({ plantsStoraged }) => {
-  const { navigate } = useNavigation();
-  const [loading, setLoading] = useState<boolean>(true);
+export default ({ plantsStoraged, removePlant }) => {
   const [nextWaterd, setNextWaterd] = useState<string>('');
 
   useEffect(() => {
-    const nextTime = formatDistance(
-      new Date(plantsStoraged[0].dateTimeNotification).getTime(),
-      new Date().getTime(),
-      { locale: ptBR }
-    );
-    setNextWaterd(`Não esqueça de reagar a ${plantsStoraged[0].name} à ${nextTime} horas.`);
+    if (plantsStoraged.length > 0) {
+      const nextTime = formatDistance(
+        new Date(plantsStoraged[0].dateTimeNotification).getTime(),
+        new Date().getTime(),
+        { locale: ptBR }
+      );
+      setNextWaterd(`Não esqueça de reagar a ${plantsStoraged[0].name} à ${nextTime} horas.`);
+    }
+  }, [plantsStoraged]);
 
-    setLoading(false);
-  }, []);
+  const handleRemove = (plant: IPlants) => () => {
+    Alert.alert('Remover', `Deseja remover a ${plant.name}?`, [
+      { text: 'Não 🙏', style: 'cancel' },
+      { text: 'Sim 😥', onPress: () => removePlant(plant) },
+    ]);
+  };
 
   return (
     <Container>
@@ -40,20 +45,25 @@ export default ({ plantsStoraged }) => {
         <Header />
       </HeaderWapper>
 
-      <Spotlight>
-        <SpotlightImage source={images.waterdrop} />
-        <SpotlighText>{nextWaterd}</SpotlighText>
-      </Spotlight>
-
-      <Plants>
-        <PlantsTitle>Próximas regadas</PlantsTitle>
-        <PlantsList
-          renderItem={({ item }) => <PlantLargeCard data={item} />}
-          keyExtractor={item => String(item.id)}
-          showsVerticalScrollIndicator={false}
-          data={plantsStoraged}
-        />
-      </Plants>
+      {plantsStoraged.length > 0 && (
+        <>
+          <Spotlight>
+            <SpotlightImage source={images.waterdrop} />
+            <SpotlighText>{nextWaterd}</SpotlighText>
+          </Spotlight>
+          <Plants>
+            <PlantsTitle>Próximas regadas</PlantsTitle>
+            <PlantsList
+              renderItem={({ item }) => (
+                <PlantLargeCard handleRemove={handleRemove(item)} data={item} />
+              )}
+              keyExtractor={item => String(item.id)}
+              showsVerticalScrollIndicator={false}
+              data={plantsStoraged}
+            />
+          </Plants>
+        </>
+      )}
     </Container>
   );
 };

@@ -5,6 +5,7 @@ import { IEnvironments, IPlants } from '@/interfaces';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
+  background-color: ${colors.background};
   flex: 1;
 `;
 

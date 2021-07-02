@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { StyleSheet } from 'react-native';
 import { SvgFromUri } from 'react-native-svg';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { colors, layout, fonts } from '@/constants';
@@ -18,11 +19,6 @@ export const PantInfoWapper = styled.View`
   padding-vertical: ${layout.scale() * 50}px;
   padding-horizontal: ${layout.screenPadding}px;
 `;
-
-export const PlantImage = styled(SvgFromUri).attrs(() => ({
-  height: layout.scale() * 200,
-  width: layout.scale() * 200,
-}))``;
 
 export const PlantName = styled.Text`
   font-family: ${fonts.heading};
@@ -92,3 +88,20 @@ export const DateTimePickerButton = styled(TouchableOpacity)`
   align-items: center;
   width: 100%;
 `;
+
+const styles = StyleSheet.create({
+  contentContainerStyle: {
+    flex: 1,
+  },
+});
+
+export const Scroll = styled.ScrollView.attrs(() => ({
+  contentContainerStyle: styles.contentContainerStyle,
+}))`
+  flex: 1;
+`;
+
+export const PlantImage = styled(SvgFromUri).attrs(() => ({
+  height: layout.scale() * 200,
+  width: layout.scale() * 200,
+}))``;

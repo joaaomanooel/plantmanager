@@ -586,7 +586,7 @@ SPEC CHECKSUMS:
   EXStructuredHeaders: be834496a4d9fd0069cd12ec1cc57b31c6d3b256
   EXUpdates: efe0e8c514dcff06a8fd0b63be6019a6365fb9c7
   FBLazyVector: e686045572151edef46010a6f819ade377dfeb4b
-  FBReactNativeSpec: 34ace2580f23eda26db85d04527e5e53c3904e22
+  FBReactNativeSpec: af30818089b4767f1d35bd1f8c8ed70ac940123a
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   lottie-react-native: 4dff8fe8d10ddef9e7880e770080f4a56121397e

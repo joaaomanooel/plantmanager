@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { IPlants } from '@/interfaces';
-import { setPlant } from '@/redux/plants';
+import { savePlantRequest } from '@/redux/plants';
 
 import PlantSave from './PlantSave';
 
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setPlant: (plant: IPlants) => dispatch(setPlant(plant)),
+  savePlant: (plant: IPlants) => dispatch(savePlantRequest(plant)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlantSave);

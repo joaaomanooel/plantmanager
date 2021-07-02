@@ -40,3 +40,16 @@ export const TimeLabel = styled.Text`
 export const Time = styled(Title)`
   font-size: ${layout.scale() * 14}px;
 `;
+
+export const RemoveButton = styled(RectButton)`
+  width: ${layout.scale() * 100}px;
+  height: ${layout.scale() * 85}px;
+  background-color: ${colors.red};
+  margin-top: ${layout.scale() * 15}px;
+  border-radius: ${layout.scale() * 20}px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  right: ${layout.scale() * 20}px;
+  padding-left: ${layout.scale() * 15}px;
+`;

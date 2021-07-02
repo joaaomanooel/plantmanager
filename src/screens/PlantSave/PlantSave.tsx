@@ -21,9 +21,10 @@ import {
   TipsImage,
   TipText,
   PantInfoWapper,
+  Scroll,
 } from './styles';
 
-export default ({ setPlant }) => {
+export default ({ savePlant }) => {
   const [selectedDateTime, setSelectedDateTime] = useState<Date>(new Date());
   const [showDatePicker, setShowDatePicker] = useState<boolean>(Platform.OS === 'ios');
 
@@ -48,7 +49,7 @@ export default ({ setPlant }) => {
 
   const handleSavePlant = () => {
     try {
-      setPlant({ ...plant, dateTimeNotification: selectedDateTime } as IPlants);
+      savePlant({ ...plant, dateTimeNotification: selectedDateTime } as IPlants);
 
       navigate(navigations.Confirmation, {
         subtitle:
@@ -64,39 +65,44 @@ export default ({ setPlant }) => {
   };
 
   return (
-    <Container>
-      <PantInfoWapper>
-        <PlantImage uri={plant.photo} />
+    <Scroll>
+      <Container>
+        <PantInfoWapper>
+          <PlantImage uri={plant.photo} />
 
-        <PlantName>{plant.name}</PlantName>
-        <PlantAbout>{plant.about}</PlantAbout>
-      </PantInfoWapper>
-      <ControllersWapper>
-        <TipsContainer>
-          <TipsImage source={images.waterdrop} />
-          <TipText>{plant.water_tips}</TipText>
-        </TipsContainer>
+          <PlantName>{plant.name}</PlantName>
+          <PlantAbout>{plant.about}</PlantAbout>
+        </PantInfoWapper>
+        <ControllersWapper>
+          <TipsContainer>
+            <TipsImage source={images.waterdrop} />
+            <TipText>{plant.water_tips}</TipText>
+          </TipsContainer>
 
-        <AlertLabel>Escoha o melhor horário para ser lembrado:</AlertLabel>
+          <AlertLabel>Escoha o melhor horário para ser lembrado:</AlertLabel>
 
-        {showDatePicker && (
-          <DateTimePicker
-            onChange={handleChangeTime}
-            value={selectedDateTime}
-            display="spinner"
-            mode="time"
-            is24Hour
-          />
-        )}
+          {showDatePicker && (
+            <DateTimePicker
+              onChange={handleChangeTime}
+              value={selectedDateTime}
+              display="spinner"
+              mode="time"
+              is24Hour
+            />
+          )}
 
-        {Platform.OS === 'android' && (
-          <DateTimePickerButton onPress={handleOpenDateTimePickerForAndroid}>
-            <DateTimePickerText>{`Mudar ${format(selectedDateTime, 'HH:mm')}`}</DateTimePickerText>
-          </DateTimePickerButton>
-        )}
+          {Platform.OS === 'android' && (
+            <DateTimePickerButton onPress={handleOpenDateTimePickerForAndroid}>
+              <DateTimePickerText>{`Mudar ${format(
+                selectedDateTime,
+                'HH:mm'
+              )}`}</DateTimePickerText>
+            </DateTimePickerButton>
+          )}
 
-        <Button text="Cadastrar Planta" onPress={handleSavePlant} />
-      </ControllersWapper>
-    </Container>
+          <Button text="Cadastrar Planta" onPress={handleSavePlant} />
+        </ControllersWapper>
+      </Container>
+    </Scroll>
   );
 };
