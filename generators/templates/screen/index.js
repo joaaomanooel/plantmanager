@@ -6,18 +6,23 @@ const addActions = [
   },
   {
     type: 'add',
+    path: '../src/screens/{{pascalCase name}}/{{pascalCase name}}.tsx',
+    templateFile: 'templates/screen/screen.tsx.hbs'
+  },
+  {
+    type: 'add',
     path: '../src/screens/{{pascalCase name}}/styles.ts',
     templateFile: 'templates/screen/styles.ts.hbs'
   },
   {
     type: 'modify',
-    path: '../src/navigation/index.tsx',
+    path: '../src/navigation/StackNavigation.tsx',
     pattern: /(-- IMPORT SCREEN --)/gi,
     template: "$1\r\nimport {{pascalCase name}} from '@/screens/{{pascalCase name}}';"
   },
   {
     type: 'modify',
-    path: '../src/navigation/index.tsx',
+    path: '../src/navigation/StackNavigation.tsx',
     pattern: new RegExp('(</Stack.Navigator>)', 'g'),
     template:
       '\t<Stack.Screen name={ navigations.{{pascalCase name}} } component={ {{pascalCase name}} } />\n\t\t$1'

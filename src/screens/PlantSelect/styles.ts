@@ -1,11 +1,11 @@
 import styled from 'styled-components/native';
 import { colors, layout, fonts } from '@/constants';
-import { StyleSheet } from 'react-native';
-import { FlatList } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import { IEnvironments, IPlants } from '@/interfaces';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
+  background-color: ${colors.background};
   flex: 1;
 `;
 
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   plantListColumn: {
     justifyContent: 'space-between',
-    paddingVertical: 10,
+    paddingVertical: layout.scale() * 10,
   },
 });
 
