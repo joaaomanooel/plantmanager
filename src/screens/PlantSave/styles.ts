@@ -65,7 +65,6 @@ export const TipText = styled.Text`
   margin-left: ${layout.scale() * 16}px;
   font-size: ${layout.scale() * 16}px;
   color: ${colors.blue};
-  text-align: justify;
   font-family: ${fonts.text};
 `;
 

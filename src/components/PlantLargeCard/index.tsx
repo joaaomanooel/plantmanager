@@ -31,6 +31,7 @@ export default React.memo(({ data, handleRemove, ...props }: PlantProps) => {
   return (
     <Swipeable
       overshootRight={false}
+      useNativeAnimations
       renderRightActions={() => (
         <Animated.View>
           <RemoveButton onPress={handleRemove}>
