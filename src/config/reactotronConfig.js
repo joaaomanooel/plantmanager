@@ -6,7 +6,7 @@ import Reactotron, {
   overlay,
   networking,
 } from 'reactotron-react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import sagaPlugin from 'reactotron-redux-saga';
 import { reactotronRedux } from 'reactotron-redux';
 

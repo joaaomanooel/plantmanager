@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/jost": "^0.1.0",
-    "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-async-storage/async-storage": "^1.13.0",
     "@react-native-community/datetimepicker": "3.2.0",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-community/netinfo": "^6.0.0",
@@ -29,6 +29,7 @@
     "expo": "^41.0.1",
     "expo-app-loading": "^1.0.3",
     "expo-font": "^9.1.0",
+    "expo-notifications": "~0.11.6",
     "expo-splash-screen": "^0.10.2",
     "expo-status-bar": "^1.0.4",
     "expo-updates": "^0.5.5",

@@ -36,8 +36,8 @@ export default ({ savePlant }) => {
     if (Platform.OS === 'android') setShowDatePicker(false);
 
     if (dateTime && isBefore(dateTime, new Date())) {
-      setSelectedDateTime(new Date());
-      return Alert.alert('Escolha uma hora no futuro! ⏰');
+      return setSelectedDateTime(new Date(dateTime.setDate(dateTime.getDate() + 1)));
+      // return Alert.alert('Escolha uma hora no futuro! ⏰');
     }
 
     setSelectedDateTime(dateTime || selectedDateTime);

@@ -8,9 +8,10 @@ export interface IPlants {
   water_tips: string;
   photo: string;
   environments: [string];
-  frequency: IFrequency[];
+  frequency: IFrequency;
 
   dateTimeNotification: Date;
+  notificationId: string;
   hour: string;
 }
 

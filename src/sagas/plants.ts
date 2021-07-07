@@ -3,13 +3,15 @@ import { AxiosResponse } from 'axios';
 import { Alert } from 'react-native';
 import { format } from 'date-fns';
 import { v4 as uuidv4 } from 'uuid';
+import * as Notifications from 'expo-notifications';
 
 import * as plantsActions from '@/redux/plants';
-import { plants as plantsServices } from '@/services';
+import { plants as plantsServices, notifications as notificationsServices } from '@/services';
 import { IPlants, IServicesGet } from '@/interfaces';
 
-const addInfo = currentPlant => ({
+const addInfo = customData => currentPlant => ({
   ...currentPlant,
+  ...customData,
   uuid: uuidv4(),
   hour: format(new Date(currentPlant.dateTimeNotification), 'HH:mm'),
 });
@@ -35,6 +37,7 @@ export function* getPlants({ payload }: { type: string; payload: IServicesGet })
 
 export function* removePlant({ payload }: { type: string; payload: IPlants }) {
   try {
+    yield call(notificationsServices.cancelScheduledNotification, payload.notificationId);
     const currentStoragePlants: IPlants[] = yield select(state => state.plants.storage);
 
     const storegedPlants: IPlants[] = currentStoragePlants
@@ -50,11 +53,14 @@ export function* removePlant({ payload }: { type: string; payload: IPlants }) {
 
 export function* savePlant({ payload }: { type: string; payload: IPlants }) {
   try {
+    const notificationId: string = yield call(notificationsServices.scheduleNotification, payload);
     const currentStoragePlants: IPlants[] = yield select(state => state.plants.storage);
 
     const storegedPlants: IPlants[] = [...currentStoragePlants, payload]
-      .map(addInfo)
+      .map(addInfo({ notificationId }))
       .sort(sortByData);
+
+    const notificartionsList = yield call(Notifications.getAllScheduledNotificationsAsync);
 
     yield put(plantsActions.savePlantSuccess(storegedPlants));
   } catch (error) {

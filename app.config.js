@@ -39,6 +39,16 @@ export default {
     updates: {
       fallbackToCacheTimeout: 0,
     },
+    plugins: [
+      [
+        'expo-notifications',
+        {
+          icon: './assets/icon.png',
+          color: '#ffffff',
+          // mode: 'production',
+        },
+      ],
+    ],
     splash: {
       image: './assets/splash.png',
       backgroundColor: '#ffffff',
